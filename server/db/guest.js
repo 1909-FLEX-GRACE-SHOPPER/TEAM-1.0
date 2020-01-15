@@ -1,4 +1,4 @@
-const { STRING, UUIDV4, INTEGER } = require("sequelize");
+const { STRING, UUID, UUIDV4, INTEGER } = require("sequelize");
 const db = require("./database");
 
 const Guest = db.define("guest", {

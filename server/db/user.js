@@ -1,9 +1,25 @@
-const { STRING, UUIDV4, INTEGER } = require("sequelize");
+const { STRING, UUID, UUIDV4, INTEGER } = require("sequelize");
 const db = require("./database");
 
 const User = db.define("user", {
   id: {
-    type: UUIDV4
+    type: UUID,
+    primaryKey: true,
+    defaultValue: UUIDV4
+  },
+  username: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  password: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   },
   firstName: {
     type: STRING,
@@ -17,6 +33,14 @@ const User = db.define("user", {
     allowNull: false,
     validate: {
       notEmpty: true
+    }
+  },
+  email: {
+    type: STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      isEmail: true
     }
   },
   mailingAddress: {

@@ -2,8 +2,6 @@ const express = require("express");
 const app = express();
 const { CartItem } = require("../db/index");
 
-// these two routes are mostly for clarity but do add some functionality. Especially when it comes to decremeting the quantity of a cartItem.
-
 // increment
 app.put("/:id/increment/", (req, res, next) => {
   const { id } = req.params;
@@ -23,10 +21,10 @@ app.put("/:id/decrement/", (req, res, next) => {
   CartItem.findByPk(id)
     .then(foundCartItem => {
       if (foundCartItem.quantity === 1 || !foundCartItem.quantity) {
-        foundCartItem.destroy();
+        return foundCartItem.destroy();
       }
       if (foundCartItem.quantity > 1) {
-        foundCartItem.update({ quantity: foundCartItem.quantity - 1 });
+        return foundCartItem.update({ quantity: foundCartItem.quantity - 1 });
       }
     })
     .then(updatedCartItem => {
@@ -59,12 +57,12 @@ app.post("/", (req, res, next) => {
   })
     .then(foundCartItem => {
       if (foundCartItem === null) {
-        CartItem.create({ itemId: itemId, cartId: cartId }).then(() =>
+        return CartItem.create({ itemId: itemId, cartId: cartId }).then(() =>
           res.status(201).send(console.log("item created"))
         );
       }
       if (foundCartItem) {
-        foundCartItem
+        return foundCartItem
           .update({ quantity: foundCartItem.quantity + 1 })
           .then(() => res.status(201).send(console.log("item incremented")));
       }

@@ -48,8 +48,9 @@ export const addInUser = user => {
     return axios.post("/api/users/", user).then(() => {
       return axios.post("/login", user).then(result => {
         dispatch(addUser(result));
-        dispatch(logInUser(result))
-        dispatch(loggedIn())
+        dispatch(logInUser(result));
+        dispatch(loggedIn());
+      });
     });
   });
 };

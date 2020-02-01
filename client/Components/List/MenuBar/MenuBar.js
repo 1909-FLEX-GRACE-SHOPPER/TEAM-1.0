@@ -27,8 +27,8 @@ export class MenuBar extends React.Component {
 
   render() {
     return (
-      <div className='listComponentMenuBar'>
-        <div className='listComponentMenuBar_pages'>
+      <div className="listComponentMenuBar">
+        <div className="listComponentMenuBar_pages">
           {this.props.pagination ? `PAGES :` : null}
           {this.props.pagination
             ? this.pages().map(num => (
@@ -38,7 +38,7 @@ export class MenuBar extends React.Component {
               ))
             : null}
         </div>
-        <div className='listComponentMenuBar_filters'>
+        <div className="listComponentMenuBar_filters">
           {this.props.filterMethods ? `FILTER :` : null}
           {this.props.filterMethods
             ? this.props.filterMethods.map(method => {

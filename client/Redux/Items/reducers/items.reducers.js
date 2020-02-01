@@ -7,7 +7,6 @@ const INITIAL_STATE = {
   count: 0,
   items: [],
   selectedItem: {}
-  // INITIAL STATE object
 };
 
 const itemsReducer = (state = INITIAL_STATE, action) => {

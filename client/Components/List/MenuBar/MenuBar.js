@@ -24,7 +24,6 @@ export class MenuBar extends React.Component {
       .fill(0)
       .map((val, idx) => (val = idx + 1));
   };
-
   render() {
     return (
       <div className="listComponentMenuBar">

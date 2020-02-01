@@ -6,6 +6,8 @@ const paginate = (page, resultPerPage) => {
   return { limit: resultPerPage, offset: page * resultPerPage };
 };
 
+//modified get
+
 app.get("/", (req, res, next) => {
   const { perPage, page, filter } = req.query;
   if (page !== "undefined") {

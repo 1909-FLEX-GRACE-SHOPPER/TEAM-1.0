@@ -7,7 +7,6 @@ The ListContent component excepts 2 arguments:
 type: String + pulls type of content from parent List component and renders appropriate component
 content: Array + pulls content from parent List component and renders based on type
 
-
 onMount the component ....
 -> displays all content based on type argument
 */

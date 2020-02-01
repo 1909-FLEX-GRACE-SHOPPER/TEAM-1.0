@@ -35,6 +35,7 @@ export class List extends React.Component {
       this.load();
     }
   }
+  
   load = () => {
     if (this.props.type === "items") {
       if (this.props.pagination == true && this.props.match.params.pageId) {

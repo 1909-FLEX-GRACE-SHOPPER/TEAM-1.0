@@ -1,4 +1,12 @@
-const { STRING, INTEGER, FLOAT, UUID, UUIDV4, BOOLEAN } = require("sequelize");
+const {
+  STRING,
+  INTEGER,
+  DECIMAL,
+  UUID,
+  UUIDV4,
+  BOOLEAN,
+  TEXT
+} = require("sequelize");
 const db = require("./database");
 
 const Item = db.define("item", {
@@ -17,7 +25,7 @@ const Item = db.define("item", {
   inventory: {
     type: INTEGER,
     allowNull: false,
-    defaultValue: 0
+    defaultValue: 10
   },
   size: {
     type: STRING,
@@ -28,7 +36,7 @@ const Item = db.define("item", {
     }
   },
   price: {
-    type: FLOAT,
+    type: DECIMAL(10, 2),
     allowNull: false,
     defaultValue: 0
   },
@@ -40,7 +48,7 @@ const Item = db.define("item", {
     }
   },
   imageUrl: {
-    type: STRING,
+    type: TEXT,
     defaultValue:
       "https://cdn.dribbble.com/users/716261/screenshots/6856546/artboard_1_4x.jpg",
     validate: {

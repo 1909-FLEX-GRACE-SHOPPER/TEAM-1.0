@@ -1,6 +1,6 @@
-const { STRING, INTEGER, FLOAT, UUID, UUIDV4, DATE } = require("sequelize");
+const { STRING, INTEGER, DECIMAL, UUID, UUIDV4, DATE } = require("sequelize");
 const db = require("./database");
-const Cart = require("./cart");
+const Order = require("./order");
 const Item = require("./item");
 const CartItem = db.define("cartItem", {
   id: {
@@ -8,10 +8,10 @@ const CartItem = db.define("cartItem", {
     type: UUID,
     defaultValue: UUIDV4
   },
-  cartId: {
+  orderId: {
     type: UUID,
     references: {
-      model: Cart,
+      model: Order,
       key: "id"
     }
   },
@@ -26,8 +26,9 @@ const CartItem = db.define("cartItem", {
     type: INTEGER,
     defaultValue: 1
   },
-  totalPrice: {
-    type: FLOAT
+  itemTotal: {
+    type: DECIMAL(10, 2),
+    allowNull: false
   }
 });
 
